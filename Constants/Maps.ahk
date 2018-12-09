@@ -37,12 +37,10 @@ RunMap(x)
 WaitBattle()
 {
 	GuiControl,, NB, In Battle
-	Found := 0
-	FindClick(A_ScriptDir "\pics\CombatPause", "rNoxPlayer mc o50 n0 Count1 w5000,50")
-	while(Found == 0)
-	{
-		Found := 0
-		Found := FindClick(A_ScriptDir "\pics\Turn", "rNoxPlayer mc o50 n0 Count1 w1000")
+	sleep 1000
+	Loop
+	{		
+		Found := FindClick(A_ScriptDir "\pics\Terminate", "rNoxPlayer mc o50 n0 Count1 w500")
 		if Found >= 1
 		{
 			GuiControl,, NB, Finished battle
@@ -50,7 +48,8 @@ WaitBattle()
 		}
 		else
 		{
-			ClickS(Safex,Safey)
+			;Safex, Safey dont click in a valid position
+			ClickS(700,400)
 		}
 	}
 }
@@ -68,8 +67,8 @@ WaitTurn(turn)
 		}
 		else
 		{
-			EndTurnFound := FindClick(A_ScriptDir "\pics\Turn" (turn-1), "rNoxPlayer mc o30 Count1 n0 w1000")
-			if EndTurnFound >= 1
+			TerminateFound := FindClick(A_ScriptDir "\pics\Terminate", "rNoxPlayer mc o30 Count1 n0 w1000")
+			if TerminateFound >= 1
 			{
 				GuiControl,, NB, SF moving
 			}
@@ -79,6 +78,7 @@ WaitTurn(turn)
 			}	
 		}		
 	}
+	GuiControl,, NB, G&K turn started
 }
 
 WaitExecution()
@@ -197,7 +197,7 @@ FocusChapter(Chapter)
 		GuiControl,, NB, Paused
 		Pause
 	}
-	ZoomOut(4)
+	ZoomOut(3)
 	RFindClick("\Maps\1_6\CommandPost", "rNoxPlayer mc o10 w30000,50")
 	RFindClick("Battleok", "rNoxPlayer mc o20 w30000,50")
 	RFindClick("StartCombat", "rNoxPlayer mc o30 w3000,10 a1000,620")
@@ -252,7 +252,50 @@ FocusChapter(Chapter)
 
 2_6()
 {
-
+	Global
+	FocusChapter(2)
+	DragDownToUp(764, 665, 300)
+	RFindClick("\Maps\2_6\2_6Map", "rNoxPlayer mc o20 w30000,50")
+	sleep 500
+	RFindClick("Battle", "rNoxPlayer mc o20 w30000,50")
+	sleep 1000
+	Found := NoStopFindClick("Turn0", "rNoxPlayer mc o10 Count1 n0 w10000,50")
+	if Found >= 1
+	{		
+	}
+	Else
+	{
+		GuiControl,, NB, Paused
+		Pause
+	}
+	ZoomOut(3)
+	TFindClick("\Maps\2_6\CommandPost","Battleok")
+	RFindClick("Battleok", "rNoxPlayer mc o30 w3000,10 a1000,620")
+	RFindClick("StartCombat", "rNoxPlayer mc o30 w3000,10 a1000,620")
+	sleep 2000
+	TFindClick("\Maps\2_6\CommandPostResupply","\Maps\2_6\CommandPostResupply2")
+	TFindClick("\Maps\2_6\CommandPostResupply2","ResupplyButton")
+	RFindClick("ResupplyButton", " rNoxPlayer mc o10 w30000,50")
+	sleep 500
+	DragUpToDown(660, 150, 700)
+	RFindClick("Planning", "rNoxPlayer mc o5 w30000,50")
+	RFindClick("\Maps\2_6\Node1", "rNoxPlayer mc o30 w30000,50")
+	RFindClick("\Maps\2_6\Node2", "rNoxPlayer mc o30 w30000,50")
+	RFindClick("Execute", "rNoxPlayer mc o5 w30000,50")
+	WaitExecution()
+	sleep 500
+	RFindClick("EndTurn", "rNoxPlayer mc o30 w30000,50 a1100,620")
+	WaitTurn(2)
+	sleep 5000
+	RFindClick("Planning", "rNoxPlayer mc o5 w30000,50")
+	RFindClick("\Maps\2_6\Node2Captured", "rNoxPlayer mc o30 w30000,50")
+	RFindClick("\Maps\2_6\Node3", "rNoxPlayer mc o30 w30000,50")
+	RFindClick("\Maps\2_6\Node4", "rNoxPlayer mc o30 w30000,50")
+	RFindClick("Execute", "rNoxPlayer mc o5 w30000,50")
+	WaitExecution()
+	sleep 500
+	RFindClick("EndTurn", "rNoxPlayer mc o30 w30000,50 a1100,620")
+	GoHome()
 }
 
 5_2E()
