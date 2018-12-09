@@ -37,10 +37,11 @@ RunMap(x)
 WaitBattle()
 {
 	GuiControl,, NB, In Battle
-	sleep 1000
+	FindClick(A_ScriptDir "\pics\CombatPause", "rNoxPlayer mc o30 Count1 n0 w30000,50")
+	sleep 7500
 	Loop
 	{		
-		Found := FindClick(A_ScriptDir "\pics\Terminate", "rNoxPlayer mc o50 n0 Count1 w500")
+		Found := FindClick(A_ScriptDir "\pics\LoadScreen", "rNoxPlayer mc o50 n0 Count1 w100,50")
 		if Found >= 1
 		{
 			GuiControl,, NB, Finished battle
@@ -188,7 +189,7 @@ FocusChapter(Chapter)
 	sleep 500
 	RFindClick("Battle", "rNoxPlayer mc o20 w30000,50")
 	sleep 1000
-	Found := NoStopFindClick("Turn0", "rNoxPlayer mc o10 Count1 n0 w10000,50")
+	Found := FindClick(A_ScriptDir "\pics\Turn0", "rNoxPlayer mc o30 Count1 w5000,50 n0")
 	if Found >= 1
 	{		
 	}
@@ -259,7 +260,7 @@ FocusChapter(Chapter)
 	sleep 500
 	RFindClick("Battle", "rNoxPlayer mc o20 w30000,50")
 	sleep 1000
-	Found := NoStopFindClick("Turn0", "rNoxPlayer mc o10 Count1 n0 w10000,50")
+	Found := FindClick(A_ScriptDir "\pics\Turn0", "rNoxPlayer mc o30 Count1 w5000,50 n0")
 	if Found >= 1
 	{		
 	}
