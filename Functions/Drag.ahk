@@ -4,7 +4,7 @@ global step
 init_drag()
 {
     ControlGet, nox_id, Hwnd, , ScreenBoardClassWindow, NoxPlayer
-    step := 20
+    step := 15
 }
 
 randomize(value, variance)
@@ -138,11 +138,12 @@ ZoomOut(RepeatCount=1)
     SendMiddleButtonUp(700, 400)
     Loop, %RepeatCount% {
         ; Nox is wonky if you try to zoom too much too fast
-        DragRightToLeft(300, 1250, 750)
+        DragRightToLeft(300, 1250, 850)
         sleep 600
     }
     SendMiddleButtonDown(700, 400)
     SendMiddleButtonUp(700, 400)
+    sleep 10
 }
 
 ;init_drag()
