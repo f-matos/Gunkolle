@@ -60,7 +60,7 @@ Gui, Add, Text,, MinWait:
 Gui, Add, Text,, MaxWait:
 Gui, Add, Edit, r1 w20 vNB ReadOnly
 GuiControl, Move, NB, x10 w300 y80
-Gui, Add, DDL, x40 w60 ym-3 vWorldV, |4_3E||5_4|5_4_friendly|5_2E|0_2 
+Gui, Add, DDL, x40 w60 ym-3 vWorldV, |4_3E||5_4|5_4_friendly|5_2E|0_2|1_6|2_6
 GuiControl, ChooseString, WorldV, %WorldV%
 ; Gui, Add, Edit, gWorldF r2 limit3 w10 vWorldV -VScroll ym, %World%
 ; GuiControl, Move, WorldV, x37 h17 w15
@@ -221,6 +221,21 @@ ClickTilGone(x,y,v*)
 		if(found != 1)
 		{
 			break
+		}
+	}
+}
+
+FindOneAndClick(pics)
+{
+	Loop {
+		Loop % pics.MaxIndex()
+		{
+			Found := 0
+			Found := FindClick(A_ScriptDir pics[A_Index], "rNoxPlayer mc o30 Count1 n1 w500")
+			if Found >= 1
+			{
+				return
+			}
 		}
 	}
 }
@@ -1442,6 +1457,7 @@ CombatSimsDataFlag:
 #Include %A_ScriptDir%/Functions/FindClick.ahk
 #Include %A_ScriptDir%/Constants/Maps.ahk
 #Include %A_ScriptDir%/Constants/Retirement.ahk
+#Include %A_ScriptDir%/Functions/Drag.ahk
 
 
 Initialize()
@@ -1463,6 +1479,7 @@ Initialize()
 	CombatSimsDataChecker := 1
 	5Star = TYPE97,OTS14,HK416,G41,TYPE95,G11,FAL,WA2000
 	4Star = 
+	init_drag()
 }
 
 GuiClose:
