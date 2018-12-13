@@ -80,6 +80,7 @@ WaitTurn(turn)
 		}		
 	}
 	GuiControl,, NB, G&K turn started
+	TFindClick("Planning", "PlanningReady")
 }
 
 WaitExecution()
@@ -215,9 +216,7 @@ FocusChapter(Chapter)
 	sleep 500
 	RFindClick("EndTurn", "rNoxPlayer mc o30 w30000,50 a1100,620")
 	WaitTurn(2)
-	sleep 7500
 	DragDownToUp(550, 600, 150)
-	RFindClick("Planning", "rNoxPlayer mc o5 w30000,50")
 	RFindClick("\Maps\1_6\Node2Captured", "rNoxPlayer mc o30 w30000,50")
 	RFindClick("\Maps\1_6\Node3", "rNoxPlayer mc o30 w30000,50")
 	FindOneAndClick(["\pics\Maps\1_6\Node4SF", "\pics\Maps\1_6\Node4"])
@@ -226,9 +225,7 @@ FocusChapter(Chapter)
 	sleep 500
 	RFindClick("EndTurn", "rNoxPlayer mc o30 w30000,50 a1100,620")
 	WaitTurn(3)
-	sleep 6000
 	DragDownToUp(550, 600, 200)
-	RFindClick("Planning", "rNoxPlayer mc o5 w30000,50")
 	RFindClick("\Maps\1_6\Node4Captured", "rNoxPlayer mc o30 w30000,50")
 	RFindClick("\Maps\1_6\Node5", "rNoxPlayer mc o30 w30000,50")
 	RFindClick("\Maps\1_6\Node6", "rNoxPlayer mc o30 w30000,50")
@@ -238,9 +235,7 @@ FocusChapter(Chapter)
 	sleep 500
 	RFindClick("EndTurn", "rNoxPlayer mc o30 w30000,50 a1100,620")
 	WaitTurn(4)
-	sleep 5000
 	DragDownToUp(550, 600, 200)
-	RFindClick("Planning", "rNoxPlayer mc o5 w30000,50")
 	RFindClick("\Maps\1_6\Node7After", "rNoxPlayer mc o30 w30000,50")	
 	RFindClick("\Maps\1_6\Node8", "rNoxPlayer mc o30 w30000,50")
 	RFindClick("\Maps\1_6\Node9", "rNoxPlayer mc o30 w30000,50")
