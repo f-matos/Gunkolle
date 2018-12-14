@@ -139,7 +139,7 @@ ZoomOut(RepeatCount=1)
     Loop, %RepeatCount% {
         ; Nox is wonky if you try to zoom too much too fast
         DragRightToLeft(300, 1250, 850)
-        sleep 600
+        sleep 100
     }
     SendMiddleButtonDown(700, 400)
     SendMiddleButtonUp(700, 400)
@@ -148,3 +148,4 @@ ZoomOut(RepeatCount=1)
 
 ;init_drag()
 ;DragDownToUp(764, 665, 300)
+;DragDownToUp(550, 600, 150)
