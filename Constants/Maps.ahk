@@ -199,7 +199,6 @@ FocusChapter(Chapter)
 		GuiControl,, NB, Paused
 		Pause
 	}
-	ZoomOut(2)
 	RFindClick("\Maps\1_6\CommandPost", "rNoxPlayer mc o10 w30000,50")
 	RFindClick("Battleok", "rNoxPlayer mc o20 w30000,50")
 	RFindClick("StartCombat", "rNoxPlayer mc o30 w3000,10 a1000,620")
@@ -264,8 +263,7 @@ FocusChapter(Chapter)
 		GuiControl,, NB, Paused
 		Pause
 	}
-	ZoomOut(3)
-	TFindClick("\Maps\2_6\CommandPost","Battleok")
+	RFindClick("\Maps\2_6\CommandPost", "rNoxPlayer mc o10 w30000,50")
 	RFindClick("Battleok", "rNoxPlayer mc o30 w3000,10 a1000,620")
 	RFindClick("StartCombat", "rNoxPlayer mc o30 w3000,10 a1000,620")
 	sleep 2000
@@ -282,8 +280,6 @@ FocusChapter(Chapter)
 	sleep 500
 	RFindClick("EndTurn", "rNoxPlayer mc o30 w30000,50 a1100,620")
 	WaitTurn(2)
-	sleep 5000
-	RFindClick("Planning", "rNoxPlayer mc o5 w30000,50")
 	RFindClick("\Maps\2_6\Node2Captured", "rNoxPlayer mc o30 w30000,50")
 	RFindClick("\Maps\2_6\Node3", "rNoxPlayer mc o30 w30000,50")
 	RFindClick("\Maps\2_6\Node4", "rNoxPlayer mc o30 w30000,50")
