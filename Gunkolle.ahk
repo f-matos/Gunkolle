@@ -81,6 +81,7 @@ GuiControl, Move, corpsedragoffV, x150 y58
 Gui, Add, Button, gSSBF vSSB, A
 GuiControl, Move, SSB, x250 w60 ym
 GuiControl,,SSB, Start
+Gui, Add, Button, gSchedule vBtnSchedule, Schedule
 Gui, Add, Edit, gMiW r2 w20 vmid -VScroll, %MinRandomWait%
 GuiControl, Move, mid, h20 x60 y30 w80
 Gui, Add, Edit, gMaW r2 w20 vmad -VScroll, %MaxRandomWait%
@@ -700,9 +701,44 @@ Delay:
 	return
 }
 
-
-Sortie2:
+Schedule:
 {
+	global SortieInterval
+	SortieInterval := -1
+	global OnSchedule
+	OnSchedule := 1
+	Loop, Read, schedule.txt
+	{
+		if (A_LoopReadLine == Expedition)
+		{
+
+		}
+		else
+		{
+			parts := StrSplit(A_LoopReadLine, " ", " ")
+			if (parts[2] == "")
+			{
+				Count := 1
+			}
+			else
+			{
+				count := parts[2]
+			}
+			global WorldV
+			WorldV := parts[1]
+			MsgBox, % parts[1]
+			GuiControl, ChooseString, WorldV, % parts[1] 
+			Loop % count
+			{
+				Sortie2()				
+			}
+		}
+	}
+	return
+}
+
+Sortie2() {
+	Global
 	SetTimer, NBUpdate, Off
 	SetTimer, Delay, Off
 	BusyS := 1
@@ -854,7 +890,11 @@ Sortie2:
 		BP := 0
 		SetTimer, NBUpdate, 2000
 	}
-	return	
+}
+Sortie2:
+{
+	Sortie2()
+	return
 }
 
 ; Sortie:
@@ -1478,6 +1518,8 @@ Initialize()
 	FriendChecker := 1
 	BatteryChecker := 1
 	CombatSimsDataChecker := 1
+	OnSchedule := 0
+	Schedule := 0
 	5Star = TYPE97,OTS14,HK416,G41,TYPE95,G11,FAL,WA2000
 	4Star = 
 	init_drag()
