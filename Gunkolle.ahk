@@ -60,7 +60,7 @@ Gui, Add, Text,, MinWait:
 Gui, Add, Text,, MaxWait:
 Gui, Add, Button, gSchedule vBtnSchedule, Run Schedule
 Gui, Add, Edit, r1 w20 vNB ReadOnly
-GuiControl, Move, NB, x10 w300 y80
+GuiControl, Move, NB, x10 w300 y110
 Gui, Add, DDL, x40 w60 ym-3 vWorldV, |4_3E||5_4|5_4_friendly|5_2E|0_2|1_6|2_6|3_6|4_6|5_6
 GuiControl, ChooseString, WorldV, %WorldV%
 ; Gui, Add, Edit, gWorldF r2 limit3 w10 vWorldV -VScroll ym, %World%
@@ -705,8 +705,6 @@ Schedule:
 {
 	global SortieInterval
 	SortieInterval := -1
-	global OnSchedule
-	OnSchedule := 1
 	Loop, Read, schedule.txt
 	{
 		if (A_LoopReadLine == Expedition)
@@ -890,6 +888,7 @@ Sortie2() {
 		SetTimer, NBUpdate, 2000
 	}
 }
+
 Sortie2:
 {
 	Sortie2()
@@ -1517,8 +1516,6 @@ Initialize()
 	FriendChecker := 1
 	BatteryChecker := 1
 	CombatSimsDataChecker := 1
-	OnSchedule := 0
-	Schedule := 0
 	5Star = TYPE97,OTS14,HK416,G41,TYPE95,G11,FAL,WA2000
 	4Star = 
 	init_drag()
