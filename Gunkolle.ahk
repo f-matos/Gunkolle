@@ -58,9 +58,10 @@ Gui, 1: Default
 Gui, Add, Text,, Map:
 Gui, Add, Text,, MinWait:
 Gui, Add, Text,, MaxWait:
+Gui, Add, Button, gSchedule vBtnSchedule, Run Schedule
 Gui, Add, Edit, r1 w20 vNB ReadOnly
 GuiControl, Move, NB, x10 w300 y80
-Gui, Add, DDL, x40 w60 ym-3 vWorldV, |4_3E||5_4|5_4_friendly|5_2E|0_2|1_6|2_6|3_6|4_6
+Gui, Add, DDL, x40 w60 ym-3 vWorldV, |4_3E||5_4|5_4_friendly|5_2E|0_2|1_6|2_6|3_6|4_6|5_6
 GuiControl, ChooseString, WorldV, %WorldV%
 ; Gui, Add, Edit, gWorldF r2 limit3 w10 vWorldV -VScroll ym, %World%
 ; GuiControl, Move, WorldV, x37 h17 w15
@@ -81,7 +82,6 @@ GuiControl, Move, corpsedragoffV, x150 y58
 Gui, Add, Button, gSSBF vSSB, A
 GuiControl, Move, SSB, x250 w60 ym
 GuiControl,,SSB, Start
-Gui, Add, Button, gSchedule vBtnSchedule, Schedule
 Gui, Add, Edit, gMiW r2 w20 vmid -VScroll, %MinRandomWait%
 GuiControl, Move, mid, h20 x60 y30 w80
 Gui, Add, Edit, gMaW r2 w20 vmad -VScroll, %MaxRandomWait%
@@ -726,7 +726,6 @@ Schedule:
 			}
 			global WorldV
 			WorldV := parts[1]
-			MsgBox, % parts[1]
 			GuiControl, ChooseString, WorldV, % parts[1] 
 			Loop % count
 			{
