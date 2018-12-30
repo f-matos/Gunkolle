@@ -707,16 +707,17 @@ Schedule:
 	SortieInterval := -1
 	Loop, Read, schedule.txt
 	{
-		if (A_LoopReadLine == Expedition)
+		if (%A_LoopReadLine% = Expedition)
 		{
-
+			Control, Check,, Button2
+			Sortie2()
 		}
 		else
 		{
 			parts := StrSplit(A_LoopReadLine, " ", " ")
 			if (parts[2] == "")
 			{
-				Count := 1
+				count := 1
 			}
 			else
 			{
