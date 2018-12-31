@@ -1497,7 +1497,7 @@ CombatSimsDataFlag:
 #Include %A_ScriptDir%/Functions/FindClick.ahk
 #Include %A_ScriptDir%/Constants/Maps.ahk
 #Include %A_ScriptDir%/Constants/Retirement.ahk
-#Include %A_ScriptDir%/Functions/Drag.ahk
+#Include %A_ScriptDir%/Functions/Mouse.ahk
 
 
 Initialize()
