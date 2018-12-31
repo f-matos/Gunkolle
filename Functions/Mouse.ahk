@@ -4,12 +4,12 @@ global step
 init_mouse()
 {
     ControlGet, nox_id, Hwnd, , ScreenBoardClassWindow, NoxPlayer
-    step := 10
+    step := 15
 }
 
 randomize(value, variance)
 {
-    Random, new_value, value - variance, value + variance
+    Random, new_value, (value - variance), (value + variance)
     return new_value
 }
 
@@ -66,7 +66,7 @@ DragUpToDown(x, y_start, y_end)
         sleep 1
     }
     SendLButtonUp(x, y_end)
-    sleep 100
+    sleep 300
 }
 ; Finger on bottom of the screen, and drag up
 DragDownToUp(x, y_start, y_end)
@@ -86,7 +86,7 @@ DragDownToUp(x, y_start, y_end)
         sleep 1
     }
     SendLButtonUp(x, y_end)
-    sleep 100
+    sleep 300
 }
 
 ; Finger on right of the screen, and drag left
@@ -107,7 +107,7 @@ DragRightToLeft(y, x_start, x_end)
         sleep 1
     }
     SendLButtonUp(x_end, y)
-    sleep 100
+    sleep 300
 }
 
 ; Finger on left of the screen, and drag right
@@ -146,6 +146,26 @@ ZoomOut(RepeatCount=1)
     sleep 10
 }
 
-;init_drag()
-;DragDownToUp(764, 665, 300)
-;DragDownToUp(550, 600, 150)
+; ClickM sends a MouseDown/MouseUp messages to specific coordinates, randomized by offset.
+; This works the same as ClickS (different coordinates), but it doesnt rely on Nox window being visible and
+; the click works even when the window is minimized.
+; This is not relevant now, but it opens new possibilities.
+; It also has no external dependencies, so you can "dry run" a map simply by running this file, which speeds up testing
+ClickM(x, y, offset=10)
+{
+    x := randomize(x, offset)
+    y := randomize(y, offset)
+    SendLButtonDown(x, y)
+    SendLButtonUp(x, y)
+    ; Avoids clicking too fast. Maybe we should randomize this a little bit.
+    ; Has a lower limit, if clicks too fast Nox doesnt recognize multiple clicks.
+    sleep 150
+}
+;init_mouse()
+;ClickM(566, 391)
+;DragDownToUp(485, 730, 185)
+;DragUpToDown(485, 185, 730)
+;ClickM(566, 391)
+;ClickM(415, 180)
+;ClickM(385, 365)
+;ClickM(520, 450)

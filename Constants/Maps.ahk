@@ -277,12 +277,11 @@ FocusChapter(Chapter)
 		Pause
 	}
 	ZoomOut(3)
-	RFindClick("\Maps\2_6\CommandPost", "rNoxPlayer mc o10 w30000,50")
+	ClickM(273, 359) ;CommandPost
 	RFindClick("Battleok", "rNoxPlayer mc o30 w3000,10 a1000,620")
 	RFindClick("StartCombat", "rNoxPlayer mc o30 w3000,10 a1000,620")
 	sleep 2000
-	TFindClick("\Maps\2_6\CommandPostResupply","\Maps\2_6\CommandPostResupply2")
-	TFindClick("\Maps\2_6\CommandPostResupply2","ResupplyButton")
+	CFindClick(273, 359, "ResupplyButton")
 	RFindClick("ResupplyButton", " rNoxPlayer mc o10 w30000,50")
 	sleep 500
 	DragUpToDown(660, 150, 700)
@@ -323,23 +322,20 @@ FocusChapter(Chapter)
 		Pause
 	}
 	ZoomOut(3)
-	RFindClick("\Maps\3_6\Heliport", "rNoxPlayer mc o5 w30000,50")
+	ClickM(717, 378) ;Heliport
 	RFindClick("Battleok", "rNoxPlayer mc o5 w30000,50")
-	RFindClick("\Maps\3_6\CommandPost", "rNoxPlayer mc o10 w30000,50")
+	ClickM(1059, 258) ;CommandPost 
 	RFindClick("Battleok", "rNoxPlayer mc o30 w3000,10 a1000,620")
 	RFindClick("StartCombat", "rNoxPlayer mc o30 w3000,10 a1000,620")
-	sleep 2000
-	TFindClick("\Maps\3_6\HeliportResupply","\Maps\3_6\HeliportResupply2")
-	TFindClick("\Maps\3_6\HeliportResupply2","ResupplyButton")
-	RFindClick("ResupplyButton", " rNoxPlayer mc o10 w30000,50")
+	CFindClick(717, 378, "ResupplyButton") ;Heliport
+	RFindClick("ResupplyButton", "rNoxPlayer mc o10 w30000,50")
 	sleep 500
 	RFindClick("Planning", "rNoxPlayer mc o5 w30000,50")
-	RFindClick("\Maps\3_6\Node1", "rNoxPlayer mc o30 w30000,50")
-	DragDownToUp(485, 630, 185)
-	sleep 5
-	RFindClick("\Maps\3_6\Node2", "rNoxPlayer mc o30 w30000,50")
-	TFindClick("\Maps\3_6\Node3", "\Maps\3_6\Node3Clicked")
-	RFindClick("\Maps\3_6\Node4", "rNoxPlayer mc o30 w30000,50")
+	ClickM(566, 391) ;Node
+	DragDownToUp(485, 730, 185)
+	ClickM(415, 180) ;EventNode
+	ClickM(385, 365) ;EnemyNode
+	ClickM(520, 450) ;BossNode
 	RFindClick("Execute", "rNoxPlayer mc o5 w30000,50")
 	WaitExecution()
 	sleep 500

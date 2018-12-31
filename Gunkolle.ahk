@@ -299,6 +299,21 @@ Transition(ClickThis,WaitForThis)
 	}
 }
 
+; raw coordinates version of TFindClick
+CFindClick(x, y, WaitForThis)
+{
+	Loop
+	{
+		Found := FindClick(A_ScriptDir "\pics\" WaitForThis, " rNoxPlayer mc o30 Count1 n0 w500,50")
+		if Found > 0
+		{
+			break
+		}
+		ClickM(x, y)
+	}
+}
+
+
 ExpeditionCheck(State := "")
 {			
 	global
@@ -707,7 +722,7 @@ Schedule:
 	SortieInterval := -1
 	Loop, Read, schedule.txt
 	{
-		if (%A_LoopReadLine% = Expedition)
+		if (A_LoopReadLine == "Expedition")
 		{
 			Control, Check,, Button2
 			Sortie2()

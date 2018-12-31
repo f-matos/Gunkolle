@@ -1,4 +1,6 @@
 ﻿;Click v1.61121
+;IniRead, WINID, config.ini, Variables, WINID, Nox
+;uid := WinExist(ahk_class Qt5QWindowIcon)
 
 ClickS(x,y)
 {
