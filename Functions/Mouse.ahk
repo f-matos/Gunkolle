@@ -1,10 +1,10 @@
 global nox_id
 global step
 
-init_drag()
+init_mouse()
 {
     ControlGet, nox_id, Hwnd, , ScreenBoardClassWindow, NoxPlayer
-    step := 15
+    step := 10
 }
 
 randomize(value, variance)

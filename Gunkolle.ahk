@@ -1519,7 +1519,7 @@ Initialize()
 	CombatSimsDataChecker := 1
 	5Star = TYPE97,OTS14,HK416,G41,TYPE95,G11,FAL,WA2000
 	4Star = 
-	init_drag()
+	init_mouse()
 }
 
 GuiClose:
