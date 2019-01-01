@@ -61,7 +61,7 @@ Gui, Add, Text,, MaxWait:
 Gui, Add, Button, gSchedule vBtnSchedule, Run Schedule
 Gui, Add, Edit, r1 w20 vNB ReadOnly
 GuiControl, Move, NB, x10 w300 y110
-Gui, Add, DDL, x40 w60 ym-3 vWorldV,4_3E||5_4|5_4_friendly|5_2E|0_2|1_6|2_6|3_6|4_6|5_6
+Gui, Add, DDL, x40 w60 ym-3 vWorldV,4_3E||5_4|5_4_friendly|5_2E|0_2|1_6|2_6|3_6|3_4N|4_6|5_6
 GuiControl, ChooseString, WorldV, %WorldV%
 ; Gui, Add, Edit, gWorldF r2 limit3 w10 vWorldV -VScroll ym, %World%
 ; GuiControl, Move, WorldV, x37 h17 w15

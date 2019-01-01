@@ -44,6 +44,10 @@ RunMap(x)
 	{
 		5_6()
 	}
+	else if(x == "3_4N")
+	{
+		3_4N()
+	}
 }
 
 WaitBattle()
@@ -63,6 +67,11 @@ WaitBattle()
 		{
 			;Safex, Safey dont click in a valid position
 			ClickS(700,400)
+			TerminateFound := FindClick(A_ScriptDir "\pics\Terminate", "rNoxPlayer mc o30 Count1 n0 w1000")
+			if TerminateFound >= 1
+			{
+				break
+			}
 		}
 	}
 }
@@ -573,6 +582,90 @@ FocusChapter(Chapter)
 
 	GoHome()
 	RetirementCounter--
+}
+
+3_4N()
+{
+	Global
+	FocusChapter(3)
+	RFindClick("\Maps\3_4N\NightBattle", "rNoxPlayer mc o30 w30000,50")
+	sleep 250
+	RFindClick("\Maps\3_4N\3_4NMap", "rNoxPlayer mc o5 w30000,50")
+	RFindClick("battle", "rNoxPlayer mc o5 w30000,50")
+	Found := FindClick(A_ScriptDir "\pics\Turn0", "rNoxPlayer mc o30 Count1 w5000,50 n0")
+	if Found >= 1
+	{		
+	}
+	Else
+	{
+		GuiControl,, NB, Paused
+		Pause
+	}
+	ZoomOut(2)
+	ClickM(1000, 204) ;Heliport
+	RFindClick("Battleok", "rNoxPlayer mc o5 w30000,50")
+	RFindClick("StartCombat", "rNoxPlayer mc o30 w3000,10 a1000,620")
+	CFindClick(1000, 204, "ResupplyButton") ;Heliport
+	RFindClick("ResupplyButton", "rNoxPlayer mc o10 w30000,50")
+	sleep 500
+	RFindClick("Planning", "rNoxPlayer mc o5 w30000,50")
+	ClickM(1090, 383) ;Node1
+	RFindClick("Execute", "rNoxPlayer mc o5 w30000,50")
+	WaitExecution()
+	ClickM(1000, 204) ;Heliport
+	RFindClick("\Maps\3_4N\SupportEchelon", "rNoxPlayer mc o5 w30000,50")
+	sleep 1000
+	RFindClick("\Maps\3_4N\Griffin", "rNoxPlayer mc o5 w30000,50")
+	RFindClick("Battleok", "rNoxPlayer mc o5 w30000,50")
+	sleep 2500
+	; Grffin units are Eliminate by default
+	ClickM(1090, 383) ;Node1
+	ClickM(973, 493) ;Radar
+	sleep 1500
+	RFindClick("EndTurn", "rNoxPlayer mc o30 w30000,50 a1100,620")
+	WaitTurn(2)
+	MsgBox, clicking radar
+	ClickM(969, 474) ;Radar
+	DragDownToUp(732, 723, 107)
+	ClickM(858, 148) ;Node2
+	ClickM(665, 335) ;Node3
+	RFindClick("Execute", "rNoxPlayer mc o5 w30000,50")
+	WaitExecution()
+	DragDownToUp(732, 723, 107)
+	Found := FindClick(A_ScriptDir "\pics\Maps\3_4N\Manticore", "rNoxPlayer mc o30 Count1 n0 w5000,50")
+	if Found >= 1
+	{
+		ClickM(400, 249)
+		WaitBattle()
+		sleep 500
+	}
+	else
+	{
+		MsgBox, not found
+		ClickM(665, 335) ;Node3
+		ClickM(513, 411) ;Node4
+		sleep 1500
+		RFindClick("EndTurn", "rNoxPlayer mc o30 w30000,50 a1100,620")
+		WaitTurn(3)
+		DragDownToUp(732, 723, 107)
+		ClickM(513, 411) ;Node4
+		ClickM(424, 535) ;Node5
+		RFindClick("Execute", "rNoxPlayer mc o5 w30000,50")
+		WaitExecution()
+		Found := FindClick(A_ScriptDir "\pics\Maps\3_4N\Manticore", "rNoxPlayer mc o30 Count1 n1 w5000,50")
+		if Found >= 1
+		{
+			WaitBattle()
+			sleep 500
+		}
+		else
+		{
+			; if at this point we didnt find Manticore, it attacked us in the earlier turn
+		}
+	}
+	TFindClick("Terminate", "TerminateOK")
+	RFindClick("TerminateOK", "rNoxPlayer mc o30 w30000,50")
+	GoHome()
 }
 
 5_4(friendly := False)
