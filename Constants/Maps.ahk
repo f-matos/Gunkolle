@@ -48,6 +48,10 @@ RunMap(x)
 	{
 		3_4N()
 	}
+	else if(x == "6_6")
+	{
+		6_6()
+	}
 }
 
 WaitBattle()
@@ -197,6 +201,10 @@ FocusChapter(Chapter)
 	}
 	Found := 0
 	while (Found == 0) {
+		if (Chapter > 5)
+		{
+			DragDownToUp(264, 689, 247)
+		}
 		NoStopFindClick("Maps\Chapters\" Chapter "NotClicked","rNoxPlayer mc o30")
 		Found := FindClick(A_ScriptDir "\pics\Maps\Chapters\" Chapter "Clicked", "rNoxPlayer mc o30 Count1 w500,50 n0")
 	}
@@ -884,6 +892,56 @@ FocusChapter(Chapter)
 	RFindClick("\Maps\5_6\Node2", "rNoxPlayer mc o30 w30000,50")
 	RFindClick("\Maps\5_6\Node3", "rNoxPlayer mc o30 w30000,50")
 	RFindClick("\Maps\5_6\Node4", "rNoxPlayer mc o30 w30000,50")
+	RFindClick("Execute", "rNoxPlayer mc o5 w30000,50")
+	WaitExecution()
+	sleep 500
+	RFindClick("EndTurn", "rNoxPlayer mc o30 w30000,50 a1100,620")
+	GoHome()
+}
+
+6_6()
+{
+	Global
+	FocusChapter(6)
+	DragDownToUp(764, 665, 300)
+	RFindClick("\Maps\6_6\6_6Map", "rNoxPlayer mc o20 w30000,50")
+	sleep 500
+	RFindClick("Battle", "rNoxPlayer mc o20 w30000,50")
+	sleep 1000
+	Found := FindClick(A_ScriptDir "\pics\Turn0", "rNoxPlayer mc o30 Count1 w5000,50 n0")
+	if Found >= 1
+	{		
+	}
+	Else
+	{
+		GuiControl,, NB, Paused
+		Pause
+	}
+	ZoomOut(3)
+	CFindClick(152, 242, "Battleok")
+	RFindClick("Battleok", "rNoxPlayer mc o30 w3000,10 a1000,620")
+	sleep 500
+	RFindClick("StartCombat", "rNoxPlayer mc o30 w3000,10 a1000,620")
+	sleep 2000
+	CFindClick(151, 239,"\Maps\6_6\HeliportResupply2")
+	TFindClick("\Maps\6_6\HeliportResupply2","ResupplyButton")
+	RFindClick("ResupplyButton", " rNoxPlayer mc o10 w30000,50")
+	sleep 2000 ;Battle info is right on top of node, so we have to wait more than usual
+	RFindClick("Planning", "rNoxPlayer mc o5 w30000,50")
+	ClickM(383, 244) ;Node1
+	ClickM(558, 252) ;Node2
+	ClickM(688, 250) ;Heliport
+	RFindClick("Execute", "rNoxPlayer mc o5 w30000,50")
+	WaitExecution()
+	sleep 500
+	RFindClick("EndTurn", "rNoxPlayer mc o30 w30000,50 a1100,620")
+	WaitTurn(2)
+
+	ClickM(688, 250) ;Heliport
+	ClickM(621, 368) ;EventNode
+	ClickM(548, 567) ;Heliport
+	ClickM(743, 600) ;Node3
+	ClickM(776, 442) ;Boss
 	RFindClick("Execute", "rNoxPlayer mc o5 w30000,50")
 	WaitExecution()
 	sleep 500
