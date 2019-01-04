@@ -875,7 +875,7 @@ FocusChapter(Chapter)
 	RFindClick("Battleok", "rNoxPlayer mc o5 w30000,50")
 	RFindClick("StartCombat", "rNoxPlayer mc o30 w3000,10 a1000,620")
 	sleep 2000
-	TFindClick("\Maps\5_6\HeliportResupply","\Maps\5_6\HeliportResupply2")
+	CFindClick(1074, 210,"\Maps\5_6\HeliportResupply2")
 	TFindClick("\Maps\5_6\HeliportResupply2","ResupplyButton")
 	RFindClick("ResupplyButton", " rNoxPlayer mc o10 w30000,50")
 	sleep 500
