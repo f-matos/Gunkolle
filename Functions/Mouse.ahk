@@ -162,10 +162,3 @@ ClickM(x, y, offset=10)
     sleep 150
 }
 ;init_mouse()
-;ClickM(566, 391)
-;DragDownToUp(485, 730, 185)
-;DragUpToDown(485, 185, 730)
-;ClickM(566, 391)
-;ClickM(415, 180)
-;ClickM(385, 365)
-;ClickM(520, 450)
